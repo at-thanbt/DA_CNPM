@@ -10,13 +10,15 @@ import java.sql.SQLException;
 
 import java.sql.Statement;
 
+import jdk.internal.dynalink.beans.StaticClass;
+
 public class BaseDAO {
 
-	private Connection con = null;
-	Statement st;
-	ResultSet rs;
+	private static Connection con = null;
+	static Statement st;
+	static ResultSet rs;
 
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -31,7 +33,7 @@ public class BaseDAO {
 		return con;
 	}
 
-	public void closeConnection() {
+	public static void closeConnection() {
 		try {
 			if (rs != null) {
 				rs.close();

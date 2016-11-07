@@ -63,46 +63,20 @@ h4 {
 				</ul>
 			</div>
 		<div class="content" align="center">
-<h1>Đăng Ký</h1>
-<form action="CheckDangKy" method="post">
-						<h4><%if(!(thongbao==null)){ System.out.println(thongbao); %>
-					<%=thongbao%>
-					<%} %>
-									
-					</h4>
-					Biệt danh:<br> <input name = "bietdanh" type = "text" ><br><br>
-					Email: <br><input name = "userName" type = "text" ><br><br>
-					Mật khẩu:<br> <input name = "password1" type = "password" ><br><br>
-					Nhập lại mật khẩu:<br> <input name = "password2" type = "password" ><br><br>
-					<textarea disabled rows="8" cols="50">
-At w3schools.com you will learn how to make a website.
-We offer free tutorials in all web development technologies.
-At w3schools.com you will learn how to make a website.
-We offer free tutorials in all web development technologies.
-At w3schools.com you will learn how to make a website.
-We offer free tutorials in all web development technologies.
-At w3schools.com you will learn how to make a website.
-We offer free tutorials in all web development technologies.
-At w3schools.com you will learn how to make a website.
-We offer free tutorials in all web development technologies.
-At w3schools.com you will learn how to make a website.
-We offer free tutorials in all web development technologies.
-					</textarea>
-					<br>
-					<input onclick=" if(this.checked){myFunction()}"type="checkbox" id="myCheck">
-				
-					Tôi đồng ý với các điều khoản <br><br>
-		              <input type = "submit" value = "Đăng Ký"  id ="bt" disabled="true">
+           <h1>Đăng Ký</h1>
+             <form action="CheckDangKy" method="post">
+				 Username:<br> <input name = "username" type = "text" ><br><br>
+			     Email: <br><input name = "email" type = "text" ><br><br>
+				 Mat khau:<br> <input name = "password1" type = "password" ><br><br>
+				PhoneNumber:<br> <input name = "phone" type = "text" ><br><br>
+			 	<br>
+			  <div>
+				<span><input type="reset" value="Nhập lại"
+				style="margin-top: 15px;"></span> <span><input
+				type="submit" value="Đăng ký" name="submit"
+				style="margin-right: 30px; margin-top: 15px;"></span>
 
+			  </div>
 			</form>
-			<script>
-function myFunction() {
-    var x = document.getElementById("myCheck");
-    if(x.checked = true)
-    	{
-    	document.getElementById("bt").disabled = false;
-    	}
-}
-</script>
 </body>
 </html>

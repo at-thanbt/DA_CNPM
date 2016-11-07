@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.bo.CheckLoginBO;
+import model.dao.BaseDAO;
+
 
 /**
  * Servlet implementation class CheckLoginServlet
@@ -22,64 +24,69 @@ import model.bo.CheckLoginBO;
 @WebServlet("/CheckLoginServlet")
 public class CheckLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CheckLoginServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public CheckLoginServlet() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-
+		
 		CheckLoginBO ch = new CheckLoginBO();
+		BaseDAO baseDAO = new BaseDAO();
 		try {
-			if (ch.isValidAccount(userName, password)) {
+			if(ch.isValidAccount(userName, password))
+			{
 				HttpSession session = request.getSession();
 				HttpSession session1 = request.getSession();
-				String admin = "admin";
-				String user = "user";
-				session.setAttribute("userName", userName);
-				System.out.print(userName);
-
-				Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-				Connection conn = DriverManager.getConnection("jdbc:odbc:DA_CNPM");
-				Statement st = conn.createStatement();
-				String sql = "SELECT Quyen FROM THANHVIEN where TenTaiKhoan = '" + userName + "'";
+				String admin="admin";
+				String user ="user";
+				 session.setAttribute("userName", userName);
+				 System.out.print(userName);
+				
+				Connection conn = baseDAO.getConnection();
+				Statement st= conn.createStatement();
+				String sql="SELECT role FROM Account where username = '"+userName+"'";
 				ResultSet rs = st.executeQuery(sql);
-				while (rs.next()) {
-					if ("admin".equals(rs.getString("Quyen"))) {
-						session1.setAttribute("quyen", admin);
-
-						response.sendRedirect("DA_trangcanhan.jsp");
-
-					} else {
-						session1.setAttribute("quyen", user);
+				while(rs.next())
+				{
+					if(admin.equals(rs.getString("role")))
+					{
+						session1.setAttribute("role", admin);
+						
 						response.sendRedirect("DA_trangcanhan.jsp");
 					}
-
+					else
+					{
+						session1.setAttribute("role", user);
+						response.sendRedirect("DA_trangcanhan.jsp");
+					}
+					
 				}
-
-			} else {
-				String thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
-				request.setAttribute("Thongbao", thongbao);
+				
+			}
+			else
+			{
+				String thongbao="Tên đăng nhập hoặc mật khẩu không đúng.";
+				request.setAttribute("Thongbao",thongbao);
 				RequestDispatcher rd = request.getRequestDispatcher("dangnhap.jsp");
 				rd.forward(request, response);
 			}
