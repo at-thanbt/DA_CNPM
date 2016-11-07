@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.bean.Tindang;
 import model.bo.CheckBO;
@@ -20,50 +19,52 @@ import model.bo.CheckBO;
 @WebServlet("/DA_xoatin")
 public class DA_xoatin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DA_xoatin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DA_xoatin() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String idtin = request.getParameter("ID");
 		String key = request.getParameter("key");
 		CheckBO checkBO = new CheckBO();
-		if("1".equals(key)){
-		if(checkBO.isxoatin(idtin)){
+		if ("1".equals(key)) {
+			if (checkBO.isxoatin(idtin)) {
 
-			ArrayList<Tindang> arrTDD = new ArrayList<Tindang>();
-			arrTDD = checkBO.getTindadang((String)request.getAttribute("userName"));
-			request.setAttribute("arrTDD", arrTDD);
-			RequestDispatcher rd = request.getRequestDispatcher("DA_quanlytindadang.jsp");
-			rd.forward(request, response);
-			
-		}}
-		else if("0".equals(key)||"".equals(key))
-			if(checkBO.isxoatin(idtin)){
-			ArrayList<Tindang> arrTD = new ArrayList<Tindang>();
-			arrTD = checkBO.getTindang();
-			request.setAttribute("arrTD", arrTD);
-			RequestDispatcher rd = request.getRequestDispatcher("DA_quanlytinchuadang.jsp");
-			rd.forward(request, response);
-			
-			
-		}
+				ArrayList<Tindang> arrTDD = new ArrayList<Tindang>();
+				arrTDD = checkBO.getTindadang((String) request.getAttribute("userName"));
+				request.setAttribute("arrTDD", arrTDD);
+				RequestDispatcher rd = request.getRequestDispatcher("DA_quanlytindadang.jsp");
+				rd.forward(request, response);
+
+			}
+		} else if ("0".equals(key) || "".equals(key))
+			if (checkBO.isxoatin(idtin)) {
+				ArrayList<Tindang> arrTD = new ArrayList<Tindang>();
+				arrTD = checkBO.getTindang();
+				request.setAttribute("arrTD", arrTD);
+				RequestDispatcher rd = request.getRequestDispatcher("DA_quanlytinchuadang.jsp");
+				rd.forward(request, response);
+
+			}
 	}
 
 }

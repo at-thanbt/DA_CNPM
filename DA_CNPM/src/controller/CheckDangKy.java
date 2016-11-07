@@ -17,46 +17,47 @@ import model.bo.DangKyBO;
 @WebServlet("/CheckDangKy")
 public class CheckDangKy extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CheckDangKy() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CheckDangKy() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		String bietdanh = request.getParameter("bietdanh");
 		String userName = request.getParameter("userName");
 		String password1 = request.getParameter("password1");
-		String password2 = request.getParameter("password2");	
-	
-		DangKyBO ch = new DangKyBO();	
-		if(ch.checkdk(bietdanh, userName, password1, password2))
-		{
+		String password2 = request.getParameter("password2");
+
+		DangKyBO ch = new DangKyBO();
+		if (ch.checkdk(bietdanh, userName, password1, password2)) {
 			RequestDispatcher rd = request.getRequestDispatcher("dangnhap.jsp");
-			rd.forward(request, response);		}
-		else
-		{
-			String thongbao="Đăng ký thất bại ";
-			request.setAttribute("Thongbao",thongbao);
+			rd.forward(request, response);
+		} else {
+			String thongbao = "Ä�Äƒng kĂ½ tháº¥t báº¡i ";
+			request.setAttribute("Thongbao", thongbao);
 			RequestDispatcher rd = request.getRequestDispatcher("dangky.jsp");
 			rd.forward(request, response);
 
 		}
-	
+
 	}
 
 }
