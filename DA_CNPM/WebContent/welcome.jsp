@@ -83,8 +83,8 @@
        
       </ul>
      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Đăng ký</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
+        <li><a href="http://localhost:8080/DA_CNPM/dangky.jsp"><span class="glyphicon glyphicon-log-out"></span> Đăng ký</a></li>
+        <li><a href="http://localhost:8080/DA_CNPM/dangnhap.jsp"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
       </ul>
     </div>
   </div>
