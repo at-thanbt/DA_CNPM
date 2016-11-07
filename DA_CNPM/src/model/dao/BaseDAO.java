@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 public class BaseDAO {
 
-	private Connection con=null;
+	private Connection con = null;
 	Statement st;
 	ResultSet rs;
 
@@ -20,9 +20,9 @@ public class BaseDAO {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-			String url="jdbc:sqlserver://localhost\\SQL2008:1433;databaseName=DA_CNPM";
+			String url = "jdbc:sqlserver://localhost\\SQL2008:1433;databaseName=DA_CNPM";
 
-			con=DriverManager.getConnection(url,"sa","gago267");
+			con = DriverManager.getConnection(url, "sa", "gago267");
 			st = con.createStatement();
 		} catch (Exception e) {
 			con = null;
@@ -46,9 +46,8 @@ public class BaseDAO {
 
 		}
 	}
-	
-	
-	public boolean isExcute(String sql){
+
+	public boolean isExcute(String sql) {
 		getConnection();
 		try {
 			st.executeUpdate(sql);
@@ -59,6 +58,6 @@ public class BaseDAO {
 			closeConnection();
 			return false;
 		}
-		
+
 	}
 }

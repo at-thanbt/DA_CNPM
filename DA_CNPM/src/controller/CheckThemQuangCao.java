@@ -19,42 +19,44 @@ import model.bo.CheckBO;
 @WebServlet("/CheckThemQuangCao")
 public class CheckThemQuangCao extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CheckThemQuangCao() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CheckThemQuangCao() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-request.setCharacterEncoding("utf-8");
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+
 		String ten = request.getParameter("ten");
 		String ngay = request.getParameter("ngay");
 		String han = request.getParameter("han");
 		String gia = request.getParameter("gia");
 		String image = request.getParameter("image");
 		CheckBO checkBO = new CheckBO();
-		if(checkBO.ThemQuangcao(ten, ngay, han, gia,image)){
+		if (checkBO.ThemQuangcao(ten, ngay, han, gia, image)) {
 			ArrayList<QuangCao> arrV = new ArrayList<QuangCao>();
 			arrV = checkBO.getQuangCao();
 			request.setAttribute("arrV", arrV);
 			RequestDispatcher rd = request.getRequestDispatcher("QuangCao.jsp");
 			rd.forward(request, response);
-		}
-		else{
+		} else {
 			response.sendRedirect("themQuangCao.jsp");
 		}
 	}

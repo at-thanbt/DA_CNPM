@@ -18,45 +18,45 @@ import model.bo.DoiMatKhauBO;
 @WebServlet("/ceckpassword")
 public class Checkpassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Checkpassword() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
-		
+	public Checkpassword() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		String matkhaucu = request.getParameter("matkhaucu");
 		String matkhaumoi1 = request.getParameter("matkhaumoi1");
 		String matkhaumoi2 = request.getParameter("matkhaumoi2");
-	HttpSession session= request.getSession();
-		
-		String userName=(String)session.getAttribute("userName");
+		HttpSession session = request.getSession();
+
+		String userName = (String) session.getAttribute("userName");
 		DoiMatKhauBO ch = new DoiMatKhauBO();
-		if(ch.checkdoi(userName, matkhaucu, matkhaumoi1, matkhaumoi2))
-		{
+		if (ch.checkdoi(userName, matkhaucu, matkhaumoi1, matkhaumoi2)) {
 			RequestDispatcher rd = request.getRequestDispatcher("DA_trangcanhan.jsp");
 			rd.forward(request, response);
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("doimatkhau.jsp");
+			rd.forward(request, response);
 		}
-		else
-		{	RequestDispatcher rd = request.getRequestDispatcher("doimatkhau.jsp");
-		rd.forward(request, response);}	
 	}
 
 }
