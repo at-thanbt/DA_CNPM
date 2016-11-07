@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.mathang;
+import model.bean.News;
 import model.bo.CheckBO;
 
 /**
@@ -45,7 +45,7 @@ public class Showchitietmathang extends HttpServlet {
 		CheckBO checkBO = new CheckBO();
 		String id = request.getParameter("idnew");
 		System.out.println(id);
-		ArrayList<mathang> arrTDD = new ArrayList<mathang>();
+		ArrayList<News> arrTDD = new ArrayList<News>();
 		arrTDD = checkBO.getMatHang(id);
 		request.setAttribute("arrTDD", arrTDD);
 		RequestDispatcher rd = request.getRequestDispatcher("Showchitietmathang.jsp");
