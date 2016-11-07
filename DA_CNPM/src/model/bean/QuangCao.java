@@ -1,7 +1,5 @@
 package model.bean;
 
-import com.sun.org.apache.xerces.internal.impl.dv.xs.DateTimeDV;
-
 public class QuangCao {
 	String ma;
 	String ngay;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import model.bean.QuangCao;
 import model.bean.Tindang;
-import model.bean.News;
+import model.bean.mathang;
 import model.dao.CheckDAO;
 
 public class CheckBO {
@@ -52,7 +52,7 @@ public class CheckBO {
 		return checDAO.getQuangCao();
 	}
 
-	public ArrayList<News> getMatHang(String idnew) {
+	public ArrayList<mathang> getMatHang(String idnew) {
 		return checDAO.getMatHang(idnew);
 	}
 }

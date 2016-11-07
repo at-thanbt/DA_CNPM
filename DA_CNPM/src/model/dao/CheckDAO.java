@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import model.bean.QuangCao;
 import model.bean.Tindang;
 import model.bean.Vacxin;
-import model.bean.News;
+import model.bean.mathang;
 
 public class CheckDAO extends BaseDAO {
 	public boolean ThemQuangCao(String ten, String ngay, String han, String gia, String image) {
@@ -229,20 +229,20 @@ public class CheckDAO extends BaseDAO {
 
 	}
 
-	public ArrayList<News> getMatHang(String idnew) {
-		ArrayList<News> arrTDD = new ArrayList<News>();
+	public ArrayList<mathang> getMatHang(String idnew) {
+		ArrayList<mathang> arrTDD = new ArrayList<mathang>();
 		String sql = "select * from fthongtinmathang('" + idnew + "');";
 
 		try {
 			getConnection();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
-				News mh = new News();
+				mathang mh = new mathang();
 				mh.setIdnew(rs.getString(1));
-				mh.setIdAccount(rs.getString(2));
-				mh.setTitle(rs.getString(3));
-				mh.setContent(rs.getString(4));
-				mh.setIdcategory(rs.getString(5));
+				mh.setTitle(rs.getString(2));
+				mh.setUsername(rs.getString(3));
+				mh.setPhone(rs.getString(4));
+				mh.setEmail(rs.getString(5));
 				mh.setCost(rs.getString(6));
 				mh.setIdcategory(rs.getString(7));
 				mh.setAddress(rs.getString(8));
