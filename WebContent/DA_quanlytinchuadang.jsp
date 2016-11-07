@@ -105,7 +105,7 @@
 						
 						<th align="center"><%=arrTD.get(i).getLinkImage()%></th>
                      <th ><a href="DA_duyettin?ID=<%=arrTD.get(i).getId()%>&key=0" role="button" class="btn btn-success"> Duyệt </a>
-                     <a href="DA_duyettin?ID=<%=arrTD.get(i).getId()%>&key=0" role="button" class="btn btn-info"> Sửa </a>
+                     <a href="suatinchuadang.jsp?ID=<%=arrTD.get(i).getId()%>&key=0" role="button" class="btn btn-info"> Sửa </a>
                       <a href="DA_xoatin?ID=<%=arrTD.get(i).getId()%>&key=0" role="button" class="btn btn-danger">Xóa</a></th>
 
 					</tr>
