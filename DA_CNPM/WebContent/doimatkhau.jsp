@@ -52,25 +52,32 @@
 <div id="main">
 		<jsp:include page="header.jsp"></jsp:include>
 		<div class="head-link">
-				<ul>
-					<li><a href="ShowTrangChu?">Trang chủ</a></li>
-					<li><a href="DA_trangcanhan.jsp?">>Trang cá nhân</a></li>
-					<li><a href="doimatkhau.jsp?">>Đổi mật khẩu</a></li>
-					
-				</ul>
-			</div>
+			<ul>
+				<li><a href="ShowTrangChu?">Trang chủ</a></li>
+				<li><a href="DA_trangcanhan.jsp?">>Trang cá nhân</a></li>
+				<li><a href="doimatkhau.jsp?">>Đổi mật khẩu</a></li>
+			</ul>
+		</div>
 		<div class="content" align="center">
-<h1>Đổi mật khẩu</h1>
-<form action="ceckpassword" method="post">
-					Mật khẩu cũ:<br> <input name = "matkhaucu" type = "password" ><br><br>
-					Mật khẩu mới: <br><input name = "matkhaumoi1" type = "password" ><br><br>
-					Nhập lại mật khẩu:<br> <input name = "matkhaumoi2" type = "password" ><br><br>
-		              <input type = "submit" value = "Thay đổi mật khẩu"  >
+        <h1>Đổi mật khẩu</h1>
+			<%
+				if ("0".equals(request.getParameter("msg"))) {
+					out.print("<p style='color:red; font=weight: bold '> Thuc hien that bai </p>");
+				}
+				if ("1".equals(request.getParameter("msg"))) {
+					out.print("<p style='color:green; font=weight: bold '> Thuc hien thanh cong </p>");
+				}
+			%>
+			<form action="checkpassword" method="post">
+				Mật khẩu cũ:<br> <input name="matkhaucu" type="password"><br>
+				<br> Mật khẩu mới: <br>
+				<input name="matkhaumoi1" type="password"><br>
+				<br> Nhập lại mật khẩu:<br> <input name="matkhaumoi2"
+					type="password"><br>
+				<br> <input type="submit" value="Thay đổi mật khẩu">
 			</form>
 			<br>
-<form action="DA_trangcanhan.jsp" method="post">
-<input type = "submit" value = "Quay lại"  >
-</form>
-			
-</body>
+			<form action="DA_trangcanhan.jsp" method="post">
+				<input type="submit" value="Quay lại">
+			</form></body>
 </html>

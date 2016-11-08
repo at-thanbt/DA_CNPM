@@ -63,7 +63,8 @@ public class DA_checktrangcanhan extends HttpServlet {
 			response.sendRedirect("TESTTTTT.jsp");
 
 		} else if (null != thaydoimatkhau) {
-			response.sendRedirect("doimatkhau.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/checkpassword");
+			rd.forward(request, response);
 
 		} else if (null != quanlytindang) {
 			HttpSession session = request.getSession();
