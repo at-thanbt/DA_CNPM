@@ -78,7 +78,7 @@
 					</tr>
 					
 					<tr>
-						<td><input style="width: 300px;" type="submit" name="thaydoimatkhau" value="Thay đổi mật khẩu"></td>
+						<td><input style="width: 300px;" type="submit" name="thaydoimatkhau"  value="Thay đổi mật khẩu"></td>
 
 					</tr>
 					<tr>

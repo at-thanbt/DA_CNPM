@@ -15,7 +15,7 @@ import model.bo.DoiMatKhauBO;
 /**
  * Servlet implementation class ceckpassword
  */
-@WebServlet("/ceckpassword")
+@WebServlet("/checkpassword")
 public class Checkpassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,17 +46,17 @@ public class Checkpassword extends HttpServlet {
 		String matkhaucu = request.getParameter("matkhaucu");
 		String matkhaumoi1 = request.getParameter("matkhaumoi1");
 		String matkhaumoi2 = request.getParameter("matkhaumoi2");
-		HttpSession session = request.getSession();
 
+		HttpSession session = request.getSession();
 		String userName = (String) session.getAttribute("userName");
 		DoiMatKhauBO ch = new DoiMatKhauBO();
-		if (ch.checkdoi(userName, matkhaucu, matkhaumoi1, matkhaumoi2)) {
-			RequestDispatcher rd = request.getRequestDispatcher("DA_trangcanhan.jsp");
+		Boolean check = ch.checkdoi(userName, matkhaucu, matkhaumoi1, matkhaumoi2);
+		if (check) {
+			RequestDispatcher rd = request.getRequestDispatcher("doimatkhau.jsp?msg=1");
 			rd.forward(request, response);
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("doimatkhau.jsp");
 			rd.forward(request, response);
 		}
 	}
-
 }
