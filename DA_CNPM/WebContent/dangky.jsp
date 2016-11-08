@@ -64,11 +64,26 @@ h4 {
 			</div>
 		<div class="content" align="center">
            <h1>Đăng Ký</h1>
-             <form action="CheckDangKy" method="post">
+           			  <%
+						if("0".equals(request.getParameter("msg"))){
+					  		  out.print("<p style='color:red; font=weight: bold '>   Username không được chứa kí tự đặc biệt. </p>");
+					  	  	}
+				    	if("1".equals(request.getParameter("msg"))){
+					  		  out.print("<p style='color:red; font=weight: bold '>   Username của bạn đã trùng với tài khoản khác. </p>");
+					  	  	}
+		           		if("2".equals(request.getParameter("msg"))){
+					  		  out.print("<p style='color:green; font=weight: bold '> Đăng ký thành công</p>");
+					  	  	}
+					  	
+		           		if("3".equals(request.getParameter("msg"))){
+					  		  out.print("<p style='color:red; font=weight: bold '> Đăng ký thất bại</p>");
+					  	  	}
+				  		%>
+             <form action="<%=request.getContextPath()%>/CheckDangKy" method="post">
 				 Username:<br> <input name = "username" type = "text" ><br><br>
 			     Email: <br><input name = "email" type = "text" ><br><br>
-				 Mat khau:<br> <input name = "password1" type = "password" ><br><br>
-				PhoneNumber:<br> <input name = "phone" type = "text" ><br><br>
+				 Mat khau:<br> <input name = "password" type = "password" ><br><br>
+				PhoneNumber:<br> <input name = "phonenumber" type = "text" ><br><br>
 			 	<br>
 			  <div>
 				<span><input type="reset" value="Nhập lại"
