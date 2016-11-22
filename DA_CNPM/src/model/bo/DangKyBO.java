@@ -7,10 +7,10 @@ public class DangKyBO {
 	DangKyDao DangKyDao = new DangKyDao();
 
 	public Account getUserByUserName(String username) {
-		return DangKyDao.getUserByUserName(username);
+		return DangKyDao.getUser(username);
 	}
 
-	public boolean addAccount(String idAccount,String username, String passwordMd5, String phonenumber, String email) {
-		return DangKyDao.addAccount(idAccount,username, passwordMd5, phonenumber, email);
+	public boolean addAccount(String idAccount,String username, String password, String phonenumber, String email,Boolean role) {
+		return DangKyDao.addAccount(idAccount,username, password, phonenumber, email,role);
 	}
 }

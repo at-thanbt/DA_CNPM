@@ -14,10 +14,10 @@ public class DangKyDao {
 	BaseDAO bd = new BaseDAO();
 	private Account account = null;
 
-	public Account getUserByUserName(String username) {
+	public Account getUser(String username) {
 		try {
 			con = BaseDAO.getConnection();
-			String query = "SELECT idAccount, username, password, phoneNumber, role, email FROM Account WHERE username = ?";
+			String query = "{CALL getUserByUsername(?)}";
 			cstmt = con.prepareCall(query);
 			cstmt.setString(1, username);
 			rs = cstmt.executeQuery();
@@ -31,19 +31,18 @@ public class DangKyDao {
 		return account;
 	}
 
-	public boolean addAccount(String idAccount,String username, String passwordMd5, String phonenumber, String email) {
+	public boolean addAccount(String idAccount,String username, String password, String phonenumber, String email, Boolean role) {
 		int result = 0;
-		boolean fasle = false;
 		try {
 
-			String query = "INSERT INTO Account(idAccount,username, password,phoneNumber,email, role) VALUES (?,?,?,?,?,?)";
+			String query = "{CALL addAccount(?,?,?,?,?,?)}";
 			cstmt = con.prepareCall(query);
 			cstmt.setString(1, idAccount);
 			cstmt.setString(2, username);
-			cstmt.setString(3, passwordMd5);
+			cstmt.setString(3, password);
 			cstmt.setString(4, phonenumber);
 			cstmt.setString(5, email);
-			cstmt.setBoolean(6, fasle);
+			cstmt.setBoolean(6, role);
 			result = cstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
