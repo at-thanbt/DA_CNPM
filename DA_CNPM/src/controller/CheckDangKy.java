@@ -56,6 +56,7 @@ public class CheckDangKy extends HttpServlet {
 			String password = request.getParameter("password");
 			String email = request.getParameter("email");
 			String phonenumber = request.getParameter("phonenumber");
+			Boolean role = false;
 			if (username.matches("^[a-zA-Z0-9]*$") == false) {
 				response.sendRedirect(request.getContextPath() + "/dangky.jsp?msg=0");
 				return;
@@ -67,11 +68,11 @@ public class CheckDangKy extends HttpServlet {
 				return;
 			}
 
-			boolean check = dangKyBo.addAccount(idAccount, username, password, phonenumber, email);
+			boolean check = dangKyBo.addAccount(idAccount, username, password, phonenumber, email,role);
 			if (check) {
-				response.sendRedirect(request.getContextPath() + "/dangky.jsp?msg=2");
-			} else {
 				response.sendRedirect(request.getContextPath() + "/dangky.jsp?msg=3");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/dangky.jsp?msg=2");
 				return;
 			}
 		} else {
