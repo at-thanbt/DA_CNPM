@@ -55,7 +55,7 @@ public class Checkpassword extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("doimatkhau.jsp?msg=1");
 			rd.forward(request, response);
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("doimatkhau.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("doimatkhau.jsp?msg=0");
 			rd.forward(request, response);
 		}
 	}
