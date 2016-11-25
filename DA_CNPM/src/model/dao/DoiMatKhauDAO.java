@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -7,6 +8,7 @@ import java.sql.Statement;
 public class DoiMatKhauDAO {
 	private Connection con = null;
 	private Statement st = null;
+	private CallableStatement cstmt = null;
 
 	BaseDAO bd = new BaseDAO();
 
@@ -14,7 +16,8 @@ public class DoiMatKhauDAO {
 		try {
 			con = bd.getConnection();
 			st = con.createStatement();
-			String sql = "SELECT password  FROM Account  where username = '" + userName + "'";
+			String sql = "{CALL checkdoi(?)}";
+			System.out.println(sql);
 			ResultSet rs = st.executeQuery(sql);
 			String tam = "";
 			while (rs.next()) {
@@ -36,12 +39,12 @@ public class DoiMatKhauDAO {
 		} else {
 			try {
 				con = bd.getConnection();
-				st = con.createStatement();
 				String sql;
-				sql = "UPDATE Account SET password ='" + matkhaumoi1 + "' WHERE username='" + userName + "'";
-				System.out.println(sql + "sql2");
-				st.executeUpdate(sql);
-				st.close();
+				sql = "{CALL checkdoi(?,?)}";
+				cstmt = con.prepareCall(sql);
+				cstmt.setString(1, userName);
+				cstmt.setString(2, matkhaumoi1);
+				cstmt.executeUpdate();
 				con.close();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
