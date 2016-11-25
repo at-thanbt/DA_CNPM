@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.QuangCao;
+import model.bean.Advertisement;
 import model.bo.CheckBO;
 
 /**
@@ -51,7 +51,7 @@ public class CheckThemQuangCao extends HttpServlet {
 		String image = request.getParameter("image");
 		CheckBO checkBO = new CheckBO();
 		if (checkBO.ThemQuangcao(ten, ngay, han, gia, image)) {
-			ArrayList<QuangCao> arrV = new ArrayList<QuangCao>();
+			ArrayList<Advertisement> arrV = new ArrayList<Advertisement>();
 			arrV = checkBO.getQuangCao();
 			request.setAttribute("arrV", arrV);
 			RequestDispatcher rd = request.getRequestDispatcher("QuangCao.jsp");

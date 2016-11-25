@@ -3,7 +3,7 @@ package model.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.bean.QuangCao;
+import model.bean.Advertisement;
 import model.bean.Tindang;
 import model.bean.Vacxin;
 import model.bean.mathang;
@@ -22,15 +22,15 @@ public class CheckDAO extends BaseDAO {
 		return isExcute(sql);
 	}
 
-	public ArrayList<QuangCao> getQuangCao() {
-		ArrayList<QuangCao> arrV = new ArrayList<QuangCao>();
+	public ArrayList<Advertisement> getQuangCao() {
+		ArrayList<Advertisement> arrV = new ArrayList<Advertisement>();
 		String sql = "select * from QUANGCAO";
 
 		try {
 			getConnection();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
-				QuangCao v = new QuangCao();
+				Advertisement v = new Advertisement();
 				v.setMa(rs.getString(1));
 				v.setTen(rs.getString(2));
 				v.setNgay(rs.getString(3));

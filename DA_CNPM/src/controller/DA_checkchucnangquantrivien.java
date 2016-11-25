@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.QuangCao;
+import model.bean.Advertisement;
 import model.bean.Tindang;
 import model.bo.CheckBO;
 
@@ -58,7 +58,7 @@ public class DA_checkchucnangquantrivien extends HttpServlet {
 
 		} else if (null != quanlythongtinkhac) {
 			CheckBO checkBO = new CheckBO();
-			ArrayList<QuangCao> arrV = new ArrayList<QuangCao>();
+			ArrayList<Advertisement> arrV = new ArrayList<Advertisement>();
 			arrV = checkBO.getQuangCao();
 			request.setAttribute("arrV", arrV);
 			RequestDispatcher rd = request.getRequestDispatcher("QuangCao.jsp");

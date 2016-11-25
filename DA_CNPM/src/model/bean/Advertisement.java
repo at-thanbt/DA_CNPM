@@ -1,6 +1,6 @@
 package model.bean;
 
-public class QuangCao {
+public class Advertisement {
 	String ma;
 	String ngay;
 	String ten;

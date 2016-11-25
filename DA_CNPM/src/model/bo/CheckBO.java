@@ -2,7 +2,7 @@ package model.bo;
 
 import java.util.ArrayList;
 
-import model.bean.QuangCao;
+import model.bean.Advertisement;
 import model.bean.Tindang;
 import model.bean.mathang;
 import model.dao.CheckDAO;
@@ -48,7 +48,7 @@ public class CheckBO {
 		return checDAO.XoaQuangCao(ma);
 	}
 
-	public ArrayList<QuangCao> getQuangCao() {
+	public ArrayList<Advertisement> getQuangCao() {
 		return checDAO.getQuangCao();
 	}
 

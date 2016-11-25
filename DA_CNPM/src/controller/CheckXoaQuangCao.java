@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.QuangCao;
+import model.bean.Advertisement;
 import model.bo.CheckBO;
 
 /**
@@ -47,7 +47,7 @@ public class CheckXoaQuangCao extends HttpServlet {
 		String MADH = request.getParameter("Ma");
 		CheckBO checkbo = new CheckBO();
 		checkbo.XoaQuangcao(MADH);
-		ArrayList<QuangCao> arrV = new ArrayList<QuangCao>();
+		ArrayList<Advertisement> arrV = new ArrayList<Advertisement>();
 		arrV = checkbo.getQuangCao();
 		request.setAttribute("arrV", arrV);
 		RequestDispatcher rd = request.getRequestDispatcher("QuangCao.jsp");

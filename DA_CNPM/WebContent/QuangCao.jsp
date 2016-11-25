@@ -1,4 +1,4 @@
-<%@page import="model.bean.QuangCao"%>
+<%@page import="model.bean.Advertisement"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -46,8 +46,8 @@
 </style>
 </head>
 <%
-	ArrayList<QuangCao> arrV = new ArrayList<QuangCao>();
-	arrV = (ArrayList<QuangCao>) request.getAttribute("arrV");
+	ArrayList<Advertisement> arrV = new ArrayList<Advertisement>();
+	arrV = (ArrayList<Advertisement>) request.getAttribute("arrV");
 %>
 <body>
 	<div id="main">
